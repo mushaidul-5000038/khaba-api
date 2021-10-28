@@ -15,3 +15,4 @@ mongoose
 
 module.exports.User = require('./User');
 module.exports.Waste = require('./Waste');
+module.exports.ItemEachDay = require('./ItemEachDay');

@@ -1,10 +1,10 @@
 const { Waste } = require('../models/db');
 const { User } = require('../models/db');
 
-exports.getAllWaste = async (req) => {
+exports.getRecentWaste = async (req) => {
     try {
         console.log(Waste)
-        let response = await Waste.find()
+        let response = await Waste.find().sort({ createdAt: -1 }).limit(10)
         if (response) {
             console.log(response)
             return { data: response };
@@ -22,10 +22,9 @@ exports.postWaste = async (req) => {
         let user = await User.findOne({ email: user_email })
         if (user) {
 
-            console.log(user.type)
+            req.user_id = user._id
             let response = await Waste.create(req)
             if (response) {
-                console.log(response)
                 return { data: response };
             }
         }
