@@ -4,9 +4,12 @@ const { User } = require('../models/db');
 exports.getRecentWaste = async (req) => {
     try {
         console.log(Waste)
-        let response = await Waste.find().sort({ createdAt: -1 }).limit(10)
+        let response = await (await Waste.findOne({ name: req.name })).populate({
+            path: 'days',
+            select: 'produced wasted createdAt'
+        })
         if (response) {
-            console.log(response)
+            console.log(response.days.length)
             return { data: response };
         }
         return { error: 'User not found' };

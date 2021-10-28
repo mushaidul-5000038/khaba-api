@@ -21,7 +21,7 @@ const itemEachDaySchema = new Schema({
 );
 
 
-const ItemEachDay = mongoose.model('itemEachDay', itemEachDaySchema);
+const ItemEachDay = mongoose.model('ItemEachDay', itemEachDaySchema);
 
 
 
