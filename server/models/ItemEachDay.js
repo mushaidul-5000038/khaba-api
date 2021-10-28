@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const itemEachDaySchema = new Schema({
     produced: {
-        type: String,
+        type: Schema.Types.Decimal128,
         required: true,
     },
     wasted: {
-        type: String,
+        type: Schema.Types.Decimal128,
         required: true
     },
     item: {
