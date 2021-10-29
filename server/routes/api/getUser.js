@@ -1,14 +1,10 @@
-const { getAllUser } = require('../../controllers/user');
-
-
-
+const { getAllUser } = require("../../controllers/user");
 
 const ctr = async (req, res, next) => {
     try {
-
         let data = await getAllUser(JSON.stringify(req.body));
-        console.log(data);
-        if ((typeof data == 'object' && 'error' in data) || !data)
+        console.log("sent data");
+        if ((typeof data == "object" && "error" in data) || !data)
             res.status(406).json(data);
         else res.status(200).json(data);
         return next();
