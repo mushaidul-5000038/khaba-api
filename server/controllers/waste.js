@@ -3,8 +3,9 @@ const { User } = require('../models/db');
 
 exports.getRecentWaste = async (req) => {
     try {
-        console.log(Waste)
-        let response = await (await Waste.findOne({ name: req.name })).populate({
+        console.log(req == 'Rice')
+        console.log(typeof 'Rice')
+        let response = await (await Waste.findOne({ name: req })).populate({
             path: 'days',
             select: 'produced wasted createdAt'
         })
